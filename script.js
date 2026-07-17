@@ -57,6 +57,24 @@ const countIO = new IntersectionObserver((entries) => {
 }, { threshold: 0.6 });
 document.querySelectorAll('.stat__num').forEach(el => countIO.observe(el));
 
+// email button: copy address to clipboard + try to open mail app.
+// Works in every context — native mail clients, in-browser webmail, and sandboxed previews.
+const emailLink = document.getElementById('emailLink');
+if (emailLink) {
+  const address = 'andrew.w.evans@gmail.com';
+  emailLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (navigator.clipboard) navigator.clipboard.writeText(address).catch(() => {});
+    const original = emailLink.dataset.label || emailLink.textContent;
+    emailLink.dataset.label = original;
+    emailLink.textContent = 'Copied ✓';
+    clearTimeout(emailLink._t);
+    emailLink._t = setTimeout(() => { emailLink.textContent = original; }, 1800);
+    // attempt to open the visitor's mail app (no-op where none is configured)
+    window.location.href = emailLink.getAttribute('href');
+  });
+}
+
 // subtle parallax tilt on project + ai cards (pointer devices only)
 if (window.matchMedia('(hover: hover)').matches &&
     !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
