@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -sI -m 15 \"https://andrewevs.github.io/github.io/\" -o /tmp/p.txt -w \"HTTP %{http_code}\\\\n\")",
+      "Read(//tmp/**)",
+      "Bash(curl -s -m 15 \"https://raw.githubusercontent.com/AndrewEvs/github.io/main/CNAME\")",
+      "Bash(dig +short letsgobuild.xyz A @8.8.8.8)",
+      "Bash(nslookup letsgobuild.xyz 8.8.8.8)",
+      "Bash(dig +short www.letsgobuild.xyz CNAME @8.8.8.8)",
+      "Bash(curl -sI -m 15 \"https://andrewevs.github.io/\" -o /tmp/gh.txt -w \"HTTP %{http_code}\\\\n\")",
+      "Bash(curl -sI -m 15 \"http://letsgobuild.xyz/\" -o /tmp/lg.txt -w \"HTTP %{http_code}\\\\n\")",
+      "Bash(curl -s -m 15 \"http://letsgobuild.xyz/\")",
+      "Bash(curl -sI -m 20 \"https://letsgobuild.xyz/\" -o /tmp/s.txt -w \"HTTP %{http_code}\\\\n\")",
+      "Bash(openssl s_client -connect letsgobuild.xyz:443 -servername letsgobuild.xyz)",
+      "Bash(openssl x509 *)",
+      "Bash(curl -sI -m 15 \"http://letsgobuild.xyz/\" -o /dev/null -w \"HTTP %{http_code}\\\\n\")",
+      "Bash(curl -sI -m 15 \"https://andrewevs.github.io/\" -o /tmp/g.txt -w \"HTTP %{http_code}\\\\n\")",
+      "Bash(curl -sI -m 15 \"https://letsgobuild.xyz/\" -o /dev/null -w \"HTTP %{http_code}\\\\n\")"
+    ]
+  }
+}
